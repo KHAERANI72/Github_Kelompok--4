@@ -1,3 +1,11 @@
+# NAMA ANGGOTA
+1. MIRSYA EMIYANTI 
+2. SITI NURKHAERANI
+3. BINTANG
+4. SUCI AZIZAH 
+
+TABEL KEAKTIFAN 
+![![Tugas Kelompok/#^Table]]
 # Pengantar
 SQL adalah bahasa yang digunakan untuk mengelola dan memanipulasi basis data relasional. Dalam materi yang akan di pelajari kali ini yaitu GROUP BY , HAVING , dan COUNT. Pada SQL mereka adalah klausa penting yang sering digunakan untuk melakukan agregasi dan penyaringan data dalam kelompok.
 # GROUP BY
