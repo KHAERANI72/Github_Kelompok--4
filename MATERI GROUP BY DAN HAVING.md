@@ -4,8 +4,6 @@
 3. BINTANG
 4. SUCI AZIZAH 
 
-
-
 # Pengantar
 SQL adalah bahasa yang digunakan untuk mengelola dan memanipulasi basis data relasional. Dalam materi yang akan di pelajari kali ini yaitu GROUP BY , HAVING , dan COUNT. Pada SQL mereka adalah klausa penting yang sering digunakan untuk melakukan agregasi dan penyaringan data dalam kelompok.
 # GROUP BY
@@ -126,3 +124,46 @@ ANALISIS :
   - `FROM pegawai` : digunakana untuk menunjukkan dari tabel mana data tersebut diambil, data diambil dari tabel `pegawai`.
   - `GROUP BY NoCab` : digunakan untuk mengelompokkan data berdasarkan kolom `NoCab`
   - `HAVING COUNT(NIP) >= 3` : digunakan untuk menyaring kelompok hasil setelah proses `GROUP BY`. `COUNT(NIP)` yang digunakan untuk menghitung jumlah baris dalam setiap kelompok yang memiliki nilai `NIP` kondisi ` >= 3` berarti hanya yang memiliki tiga atau lebih pegawai yang akan ditampilkan dalam hasil.
+
+# Fungsi agregat 
+1. SUM
+   `sum` merupakan fungsi agregat yang digunakan untuk menghitung jumlah total dari nilai  dalam kolom yang sudah ditentukan. fungsi ini berguna untuk menjumlahkan nilai dari semua baris dalam kelompok data.
+
+   contoh : 
+  ```sql 
+  SELECT NoCab, SUM(Gaji) AS Total_Gaji
+  FROM pegawai 
+  GROUP BY jabatan; 
+  ```
+
+  ![](asset/foto_3.png)
+
+2. AVG
+   `AVG` merupakan fungsi agregat yang digunakan untuk menghitung rata-rata nilai dari kolom numerik. Fungsi ini memberikan nilai rata-rata berdasarkan beris yang dipilih atau dikelompokkan .
+
+   **contoh** 
+  ```sql
+  SELECT AVG(Gaji) AS Rata_rata FROM pegawai;
+  ```
+
+  ![](asset/foto_21.png)
+   
+3. MAX
+   `MAX` merupakan fungsi agregat yang digunakan untuk mengembalikan nilai maksimum dari kolom numerik. fungsi ini berguna untuk menemukan nilai terbesar dalam data.
+
+   **contoh** 
+  ```sql
+  SELECT MAX(Gaji) AS Gaji_terbesar
+  FROM pegawai; 
+  ```
+
+  ![](asset/foto_4.png) 
+4. MIN 
+  `MIN` merupakan fungsi digunakan untuk mengembalikan nilai minimum dari kolom numerik. fungsi ini berguna untuk menemukan nilai terkecil dalam data.
+
+  **CONTOH** 
+ ```sql 
+ SELECT MIN(Gaji) AS Gaji_terkecil FROM pegawai;  
+ ```
+
+ ![](asset/foto_11.png) 
