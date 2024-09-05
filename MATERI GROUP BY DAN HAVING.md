@@ -4,6 +4,8 @@
 3. BINTANG
 4. SUCI AZIZAH 
 
+   ![](asset/foto_keaktifan.png)
+   
 # Pengantar
 SQL adalah bahasa yang digunakan untuk mengelola dan memanipulasi basis data relasional. Dalam materi yang akan di pelajari kali ini yaitu GROUP BY , HAVING , dan COUNT. Pada SQL mereka adalah klausa penting yang sering digunakan untuk melakukan agregasi dan penyaringan data dalam kelompok.
 # GROUP BY
