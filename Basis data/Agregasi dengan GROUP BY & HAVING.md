@@ -177,9 +177,9 @@ analisis
   - `jabatan = 'Manajer'` : hanya baris yang memiliki nilai `jabatan` sama dengan `'Manajer'` yang akan disertakan dalam perhitungan.
 8. Menampilkan data gaji yang sudah di kelompokkan berdasarkan 'NoCab'
    code 
-   ```sql
-   SELECT NoCab, SUM(Gaji) AS Total_gaji
-   FROM pegawai GROUP BY NoCab;
+  ```sql
+  SELECT NoCab, SUM(Gaji) AS Total_gaji
+  FROM pegawai GROUP BY NoCab;
   ```
 
  ![](asset/foto_19.png) 
@@ -192,10 +192,10 @@ analisis
  - `GROUP BY NoCab` : digunakan untuk mengelompokkan data berdasarkan kolom `NoCab`
 9. Menampilkan data gaji yang telah di kelompokkan berdasarkan gaji '>= 8000000' 
    code 
-   ```sql
-   SELECT NoCab, SUM(Gaji) AS Total_gaji
-   FROM pegawai GROUP BY NoCab HAVING SUM(Gaji) >= 8000000;
-   ```
+  ```sql
+  SELECT NoCab, SUM(Gaji) AS Total_gaji
+  FROM pegawai GROUP BY NoCab HAVING SUM(Gaji) >= 8000000;
+  ```
 
    ![](asset/foto_20.png)
 
