@@ -27,7 +27,7 @@ Ketentuan tabel: tipe data dan constraintnya
 
 Hasil struktur tabel pegawai
 
-![](asset/gambar1.JPG)
+![](asset/gambar1.jpg)
 - `desc pegawai`;` 
 Kueri ini digunakan untuk menampilkan struktur tabel `pegawai`, termasuk nama kolom, tipe data, batasan null/bukan null, batasan kunci, nilai default, dan informasi tambahan. Output kueri ini memberikan gambaran umum yang jelas tentang skema tabel, yang berguna untuk memahami data yang tersimpan dalam tabel.
 
@@ -48,7 +48,7 @@ Jadi Constraint dalam tabel database digunakan untuk menjaga integritas dan kons
 
 Hasil data tabel Pegawai
 
-![](asset/gambar2.JPG)
+![](asset/gambar2.jpg)
 
 - `SELECT * FROM pegawai;` Ini adalah query untuk menampilkan semua kolom dan baris dari tabel `pegawai`.
 - Hasil keluaran menunjukkan 9 baris data yang berisi informasi lengkap mengenai para pegawai, termasuk NIP, NDep, NBlk, JK, Alamat, Telp, Jabatan, Gaji, dan NoCab.
@@ -93,7 +93,7 @@ SELECT COUNT(NIP) AS JumlahPegawai, COUNT(Jabatan) AS JumlahJabatan FROM pegawai
 SELECT COUNT(NIP) AS JumlahPegawai
 FROM pegawai 
 WHERE NoCab = 'C102';
-	```
+```
 
 ![](Asset/gambar_hilang2.PNG)
 
@@ -118,6 +118,7 @@ GROUP BY NoCab;
 ```
 ![](Asset/gambar)
 ![](Asset/gambar 6.png)
+![](Asset/gambar6.png)
 
 - SELECT untuk memilih kolom mana saja yang ingin dihitung atau ditampilkan. 
 - Nocab = merupakan nama kolom Yang ingin ditampilkan. 
@@ -139,11 +140,9 @@ SELECT NoCab, COUNT(NIP) AS Jumlah_Pegawai
 FROM pegawai
 GROUP BY NoCab
 HAVING COUNT(NIP) >= 3;
-
 ```
 
-![](Asset/gambar4.PNG)
-
+![](Asset/gambar4.png)
 
 - SELECT = untuk memilih kolom mana sasa Yang ingin dihitung atau ditampilkan.
 - Nocab = merupakan nama kolom yang ingin ditampilkan.
@@ -164,7 +163,8 @@ HAVING COUNT(NIP) >= 3;
 SELECT SUM(Gaji) AS Total_Gaji
 FROM pegawai;
 ```
-![](Asset/gambar7.PNG)
+
+![](Asset/gambar7.png)
 
 - SELECT = untuk memilih kolom mana saja yang dipilih untuk dijumlahkan.
 - SUM (Gaji) untuk menghitung Jumlah data (khusus andka) Pada kolom Yang dipilih. Gaji merupakan nama kolom Yang dipilih untuk dihitung Jumlah isi datanya
@@ -183,9 +183,9 @@ FROM pegawai;
 SELECT SUM(Gaji) AS Gaji_Manajer
 FROM pegawai
 WHERE Jabatan = 'Manajer';
-
 ```
-![](Asset/gambar8.PNG)
+
+![](Asset/gambar8.png)
 ![](Asset/gambar 8.PNG)
 
 - SELECT = untuk memilih kolom mana saja yang dipilih untuk dijumlahkan. 
@@ -277,7 +277,7 @@ FROM pegawai
 WHERE Jabatan = 'Manajer';
 ```
 
-![[Asset/gambar 12.png]]
+![](Asset/gambar12.png)
 
 - SELECT untuk memilih kolom mana saja yang dipilih untuk ditampilkan. 
 - AVG (Gaji) = untuk menghitung rata-rata dari data yang ada pada kolom Yang dipilih Gaji adalah nama kolam Yang dipilih untuk dihitung rata-ratanya. 
@@ -496,7 +496,7 @@ HAVING SUM(Gaji) <= 2600000;
 SELECT orders.OrderID, orders.OrderDate, orders.custID, customers.companyName, customers.City, customers.Phone FROM orders, customers WHERE orders.custID = customers.customerID;
 ```
 
-![](asset/materibru1.png) 
+![](Asset/materibru1.png) 
 
 **PENJELASAN PROGRAM**
  - SELECT = untuk memilih kolom mana saja yang ingin ditampilkan dari tabel mana kolom tersebut diambil.
@@ -568,7 +568,7 @@ Analisis 4
     -> AND e.FirstName = 'Margaret';
 ```
 
-![](Asset/Materi4.png)
+![](Asset/Materi4.PNG)
 
 **Penjelasan Program**
 
