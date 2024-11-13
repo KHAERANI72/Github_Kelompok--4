@@ -27,7 +27,7 @@ Ketentuan tabel: tipe data dan constraintnya
 
 Hasil struktur tabel pegawai
 
-![[gambar1.JPG|550]]
+![](asset/gambar1.JPG)
 - `desc pegawai`;` 
 Kueri ini digunakan untuk menampilkan struktur tabel `pegawai`, termasuk nama kolom, tipe data, batasan null/bukan null, batasan kunci, nilai default, dan informasi tambahan. Output kueri ini memberikan gambaran umum yang jelas tentang skema tabel, yang berguna untuk memahami data yang tersimpan dalam tabel.
 
@@ -48,7 +48,7 @@ Jadi Constraint dalam tabel database digunakan untuk menjaga integritas dan kons
 
 Hasil data tabel Pegawai
 
-![[Asset/gambar2.JPG]]
+![](asset/gambar2.JPG)
 
 - `SELECT * FROM pegawai;` Ini adalah query untuk menampilkan semua kolom dan baris dari tabel `pegawai`.
 - Hasil keluaran menunjukkan 9 baris data yang berisi informasi lengkap mengenai para pegawai, termasuk NIP, NDep, NBlk, JK, Alamat, Telp, Jabatan, Gaji, dan NoCab.
@@ -72,7 +72,7 @@ Secara keseluruhan, tabel `pegawai`ini menyediakan informasi yang cukup lengkap
 SELECT COUNT(NIP) AS JumlahPegawai, COUNT(Jabatan) AS JumlahJabatan FROM pegawai;
 ```
 
- ![[Asset/gambar_hilang.jpg|550]]
+ ![](Asset/gambar_hilang.jpg)
 
 - SELECT = untuk memilih kolom apa saja yang ingin dipilih (untuk dihitung).
 - COUNT (NIP) = untuk menghitung Jumlah barisan data yang mempunyai dari kolom Yan dipilih. NIP adalah nama kolom Yang dipilih untuk dihitung. 
@@ -95,7 +95,7 @@ FROM pegawai
 WHERE NoCab = 'C102';
 	```
 
-![[gambar_hilang2.PNG]]
+![](Asset/gambar_hilang2.PNG)
 
 - SELECT = untuk memilih kolom mana saja yang ingin dipilih untuk dihitung. 
 - COUNT (NIP) = untuk menghitung Jumlah barisan data yang mempunyai data dari kolom Yang dipilih. NIP adalah nama kolom Yang dipilih untuk Jibitung. 
@@ -116,8 +116,8 @@ SELECT NoCab, COUNT(NIP) AS Jumlah_Pegawai
 FROM pegawai
 GROUP BY NoCab;
 ```
-
-![[Asset/gambar 6.png]]
+![](Asset/gambar)
+![](Asset/gambar 6.png)
 
 - SELECT untuk memilih kolom mana saja yang ingin dihitung atau ditampilkan. 
 - Nocab = merupakan nama kolom Yang ingin ditampilkan. 
@@ -142,7 +142,7 @@ HAVING COUNT(NIP) >= 3;
 
 ```
 
-![[Asset/gambar 4.png]]
+![](Asset/gambar4.PNG)
 
 
 - SELECT = untuk memilih kolom mana sasa Yang ingin dihitung atau ditampilkan.
@@ -164,8 +164,7 @@ HAVING COUNT(NIP) >= 3;
 SELECT SUM(Gaji) AS Total_Gaji
 FROM pegawai;
 ```
-
-![[Asset/gambar 7.png]]
+![](Asset/gambar7.PNG)
 
 - SELECT = untuk memilih kolom mana saja yang dipilih untuk dijumlahkan.
 - SUM (Gaji) untuk menghitung Jumlah data (khusus andka) Pada kolom Yang dipilih. Gaji merupakan nama kolom Yang dipilih untuk dihitung Jumlah isi datanya
@@ -184,9 +183,10 @@ FROM pegawai;
 SELECT SUM(Gaji) AS Gaji_Manajer
 FROM pegawai
 WHERE Jabatan = 'Manajer';
-```
 
-![[Asset/gambar 8.png]]
+```
+![](Asset/gambar8.PNG)
+![](Asset/gambar 8.PNG)
 
 - SELECT = untuk memilih kolom mana saja yang dipilih untuk dijumlahkan. 
 - Sum (Gaji) = untuk menghitung Jumlah isi data (khusus angka) Pada kolom Yang dipilih. Gaji adalah nama kolom Yang dipilih untuk dijumlahkan isi datanya.
@@ -209,7 +209,7 @@ FROM pegawai
 GROUP BY NoCab;
 ```
 
-![[Asset/gambar 9.png]]
+![](Asset/gambar9.png)
 
 - SELECT = untuk memilih Kolom mana saja yang dipilih untuk ditampilkan/dijumlahkan. 
 - Nocab = adalah nama kolom yang ingin ditampilkan. 
@@ -233,7 +233,7 @@ GROUP BY NoCab
 HAVING SUM(Gaji) >= 8000000;
 ```
 
-![[Asset/gambar 10.png]]
+![](Asset/gambar10.png)
 
 - SELECT = untuk memilih kolom mana saja yang dipilih untuk ditampilkan / dijumlahkan.
 - Nocab nama kolom Yang dipilih untuk ditampilkan. 
@@ -257,7 +257,7 @@ SELECT AVG(Gaji) AS Rata_rata
 FROM pegawai;
 ```
 
-![[Asset/gambar 11.png]]
+![](Asset/gambar11.png)
 
 - SELECT = untuk memilih kolom mana Sara Yang dipilih untuk ditampilkan. 
 - AVG (Gaji) = untuk menghitung rata-rata dari data yang ada pada kolom Yang dipilih. Gaji adalah nama kolom Yang dipilih untuk dihitung rata-ratanya.
@@ -300,7 +300,7 @@ FROM pegawai
 GROUP BY NoCab;
 ```
 
-![[Asset/gambar 13.png]]
+![](Asset/gambar13.png)
 
 - SELECT = untuk memilih Kolom mana saja yang dipilih untuk ditampilkan, dihitung. 
 - Nocab = Kolom Yang dipilih untuk ditampilkan. 
@@ -324,7 +324,7 @@ GROUP BY NoCab
 HAVING NoCab = 'C101' OR NoCab = 'C102';
 ```
 
-![[Asset/gambar 14.png]]
+![](Asset/gambar14.png)
 
 - SELECT = untuk memilih kolom mana saja yang dipilih untuk ditampilkan, dihitung.
 - Nocab = Kolom Yong dipilih untuk ditampilkan. 
@@ -347,7 +347,7 @@ SELECT MAX(Gaji) AS GajiTerbesar, MIN(Gaji) AS GajiTerkecil
 FROM pegawai;
 ```
 
-![[Asset/gambar 15.png]]
+![](Asset/gambar15.png)
 
 - SELECT = untuk memilih kolom mana saja yang dipilih untuk ditampilkan.
 - MAX(gaji) = untuk menampilkan nilai maksimum atau terbesar / tertinggi dari suatu data dalam kolom Yang dipilih. Gaji adalah nama kolom Yang dipilih.
@@ -368,7 +368,7 @@ FROM pegawai
 WHERE Jabatan = 'Manajer';
 ```
 
-![[Asset/gambar 16.png]]
+![](Asset/gambar16.png)
 
 - SELECT = untuk memilih kolom mana saja yang dipilih untuk ditampilkan.
 - MAX (Gaji) = untuk menampilkan nilai terbesar dari suatu data dalam kolom Yang dipilih Gajii adalah nama kolom yang dipilih. 
@@ -391,7 +391,7 @@ FROM pegawai
 GROUP BY NoCab;
 ```
 
-![[Asset/gambar 17.png]]
+![](Asset/gambar17.png)
 
 - SELECT = untuk memilih kolom mana saja yang dipilih untuk ditampilkan.
 - Nocab= nama kolom Youd ingin ditampilkan. 
@@ -416,7 +416,7 @@ GROUP BY NoCab
 HAVING COUNT(NIP) >= 3;
 ```
 
-![[Asset/gambar 18.png]]
+![](Asset/gambar18.png)
 
 - SELECT untuk memilih kolom mana sara Yang dipilih untuk ditampilkan. 
 - Nocab = nama kolom Yang ingin ditampilkan. 
@@ -445,7 +445,7 @@ SELECT COUNT(NIP) AS JumlahPegawai,
 FROM pegawai;
 ```
 
-![[Asset/gambar 19.png]]
+![](Asset/gambar19.png)
 
 - SELECT = untuk memilih kolam mana saja yang dipilih untuk ditampilkan. 
 - COUNT (NIP) = untuk menghitung jumlah barisan data yang ada pada kolam Yang dipilih. 
@@ -477,7 +477,7 @@ GROUP BY NoCab
 HAVING SUM(Gaji) <= 2600000;
 ```
 
-![[Asset/gambar 20.png]]
+![](Asset/gambar20.png)
 
 - SELECT = untuk memilih kolam mana saja yang ingin digunakan.
 - COUNT (NIP) = untuk menghitung barisan data yang ada Pada kolom Yang dipilih.

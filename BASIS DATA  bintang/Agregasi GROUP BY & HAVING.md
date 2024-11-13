@@ -1061,7 +1061,7 @@ WHERE
 ```
 
 Hasil : 
-![Join](join3.png)
+![](assets/join3.png)
 Penjelasan:
 - `SELECT` = untuk memilih kolom mana saja ynag ingin ditampilkan dari tabel mana kolom tersebut diambil.
 
@@ -1107,7 +1107,7 @@ WHERE
 ```
 
 Hasil : 
-![Join](join6.png)
+![](assets/join6.png)
 Penjelasan:
 1. **SELECT**: Memilih kolom-kolom tertentu yang ingin ditampilkan:
     - `OrderID`, `OrderDate`: Dari tabel _orders_, untuk menunjukkan nomor pesanan dan tanggal pesanan.
@@ -1121,4 +1121,3 @@ Penjelasan:
     - `c.City = 'London'`: Hanya menampilkan pesanan dari pelanggan yang berlokasi di London.
     - `e.FirstName = 'Margaret'`: Menampilkan hanya pesanan yang diurus oleh karyawan dengan nama depan "Margaret".
 
-## 
