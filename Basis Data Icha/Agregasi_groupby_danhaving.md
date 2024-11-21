@@ -568,7 +568,7 @@ Analisis 4
     -> AND e.FirstName = 'Margaret';
 ```
 
-![](Asset/Materi4.PNG)
+![](Asset/Materi4.png)
 
 **Penjelasan Program**
 
