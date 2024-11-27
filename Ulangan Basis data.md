@@ -1,26 +1,35 @@
+# Ujian Akhir
+
 tabel Keaktifan
 ![](asset/tabel_4.png)
 
-perancangan ERD 
+perancangan ERD: 
+
 ![](asset/ERD_2.jpeg)
 
 Data tabel keseluruhan
-tabel siswa
+tabel siswa: 
+
 ![](asset/post_1.png)
 
-tabel prestasi 
+tabel prestasi: 
+
 ![](asset/post_2.png)
 
-tabel detail prestasi
+tabel detail prestasi: 
+
 ![](asset/post_9.png)
 
-tabel guru pembimbing
+tabel guru pembimbing: 
+
 ![](asset/post_4.png)
 
-tabel membimbing
+tabel membimbing: 
+
 ![](asset/post_10.png)
 
-Bukti Relasi
+Bukti Relasi: 
+
 ![](asset/post_11.png)
 
 ## **Penjelasan :**
@@ -94,8 +103,11 @@ code:
     -> GROUP BY pg.id_guru;
 ```
 Hasil : 
+
 ![](asset/post_5.png)
-analisis : 
+
+analisis :
+
 **1. SELECT pg.nama_guru, MAX(p.peringkat) AS prestasi_tertinggi**
 - SELECT : 
   Code ini digunakan untuk menampilka data yang sudah di masukkan
@@ -137,7 +149,9 @@ SELECT
 
 hasil: 
 ![](asset/post_6.png)
+
 analisis: 
+
 **1. SELECT pg.nama_guru, COUNT(m.id_siswa) AS total_siswa**
 - SELECT : 
   Code ini digunakan untuk menampilka data yang sudah di masukkan
