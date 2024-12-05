@@ -53,8 +53,6 @@ Bukti Relasi:
   - Relasi ini menunjukkan siapa siswa yang mendapatkan prestasi tertentu.
   - **Ke tabel `detail_prestasi`**: Kolom **`id_prestasi`** di tabel `prestasi` berelasi dengan kolom yang sama di tabel `detail_prestasi`.
 
----
-
 ### **3. Tabel `guru_pembimbing`**
 1. **Kolom Utama**:
   - `id_guru` sebagai **Primary Key**.
@@ -106,7 +104,34 @@ Hasil :
 
 ![](asset/post_5.png)
 
-analisis :
+#### Konteks Query
+**Tujuan Query**
+Query tersebut bertujuan untuk:
+1. Mengambil nama setiap **guru pembimbing** dari tabel guru_pembimbing.
+2. Menentukan *peringkat prestasi tertinggi* yang diraih oleh masing-masing guru pembimbing berdasarkan data yang ada di tabel prestasi.
+
+**Cara Relasi**
+Query menghubungkan tiga tabel menggunakan klausa JOIN:
+1. **Tabel guru_pembimbing (alias: pg)**:
+   - Berisi informasi tentang guru pembimbing.
+   - Kolom id_guru digunakan untuk menyambungkan tabel ini dengan tabel detail_prestasi.
+   
+2. **Tabel detail_prestasi (alias: dp)**:
+   - Merupakan tabel penghubung yang menghubungkan data guru dengan data prestasi.
+   - Relasi:
+  - Kolom id_guru di tabel ini merujuk ke kolom id_guru di tabel guru_pembimbing.
+  - Kolom id_prestasi di tabel ini merujuk ke kolom id_prestasi di tabel prestasi.
+
+3. **Tabel prestasi (alias: p)**:
+   - Berisi informasi detail tentang prestasi, termasuk kolom peringkat yang digunakan untuk menentukan prestasi tertinggi.
+
+**Cara Agregasi**
+1. **Fungsi Agregasi MAX**:
+  Fungsi MAX(p.peringkat) digunakan untuk mencari *peringkat tertinggi* dari data prestasi (kolom peringkat) untuk setiap guru pembimbing. 
+2. **Klausa GROUP BY**:
+  Data dikelompokkan berdasarkan g.id_guru, sehingga hasilnya adalah satu baris untuk setiap guru, dengan nama guru dan prestasi tertinggi mereka.
+
+Analisis :
 
 **1. SELECT pg.nama_guru, MAX(p.peringkat) AS prestasi_tertinggi**
 - SELECT : 
@@ -136,7 +161,7 @@ analisis :
 - Setiap kelompok data berisi semua baris yang berkaitan dengan satu guru.
 - Setelah data dikelompokkan, fungsi agregasi seperti MAX() dapat bekerja pada setiap kelompok secara efektif.
 
-### 2. Menampilkan data guru yang paling banykan membimbing siswa
+### 2. Menampilkan data guru yang paling banyak membimbing siswa
 code: 
 ```sql 
 SELECT
@@ -149,6 +174,16 @@ SELECT
 
 hasil: 
 ![](asset/post_6.png)
+
+#### Konteks Query
+- **Tujuan Query**:  
+ Query ini bertujuan untuk menampilkan *nama guru* dan *jumlah siswa* yang mereka bimbing, tetapi hanya untuk guru yang membimbing lebih dari satu siswa.
+  
+- **Cara Relasi**:  
+ Relasi dilakukan antara tabel guru_pembimbing (yang menyimpan data guru) dan tabel membimbing (yang menghubungkan guru dengan siswa). Relasi dibuat berdasarkan kolom id_guru.
+
+- **Cara Agregasi**:  
+Data dikelompokkan berdasarkan masing-masing guru (g.id_guru), lalu dihitung jumlah siswa yang dibimbing setiap guru menggunakan fungsi agregasi COUNT().
 
 analisis: 
 
