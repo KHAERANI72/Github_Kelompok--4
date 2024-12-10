@@ -18,7 +18,7 @@ tabel prestasi:
 
 tabel detail prestasi: 
 
-![](asset/post_9.png)
+![](asset/post_3.png)
 
 tabel guru pembimbing: 
 
