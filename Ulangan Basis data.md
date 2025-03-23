@@ -1,11 +1,34 @@
-# Ujian Akhir
+# Revisi Query
 
 tabel Keaktifan
-![](asset/tabel_4.png)
+![](asset/tabel_6.png)
 
 perancangan ERD: 
 
 ![](asset/ERD_2.jpeg)
+
+Revisi ERD 
+![](asset/ERD_3.jpeg)
+### 1. **Relasi "Siswa Memiliki Prestasi" (N:N)**
+- **Kardinalitas:**
+  1. **Siswa (N):** Seorang siswa dapat memiliki lebih dari satu prestasi.
+  2.  **Prestasi (N):** Satu prestasi dapat dimiliki oleh lebih dari satu siswa (misalnya, lomba yang melibatkan beberapa siswa).
+- **Makna Relasi:**  
+   Hubungan ini menunjukkan bahwa siswa dan prestasi saling berhubungan secara fleksibel, tanpa pembatasan jumlah.
+
+### 2. **Relasi "Prestasi Mencatat Detail_Prestasi" (1:1)**
+- **Kardinalitas:**
+ 1. **Prestasi (1):** Setiap prestasi hanya memiliki satu detail terkait yang mencatat informasi lebih spesifik.
+ 2.  **Detail_Prestasi (1):** Satu detail hanya dapat terkait dengan satu prestasi.
+- **Makna Relasi:**  
+  Hubungan ini menunjukkan bahwa untuk setiap prestasi, ada satu entri detail yang mencatat informasi seperti nama prestasi, keterangan, dan tingkatnya.
+
+### 3. **Relasi "Guru Membimbing Prestasi" (N:N)**
+- **Kardinalitas:**
+ 1. **Guru_Pembimbing (N):** Seorang guru dapat membimbing lebih dari satu prestasi.
+ 2. **Prestasi (N):** Satu prestasi dapat dibimbing oleh lebih dari satu guru (misalnya, dalam proyek kelompok).
+- **Makna Relasi:**  
+  Hubungan ini menunjukkan bahwa guru dan prestasi juga saling terkait secara fleksibel.
 
 Data tabel keseluruhan
 tabel siswa: 
@@ -15,14 +38,30 @@ tabel siswa:
 tabel prestasi: 
 
 ![](asset/post_2.png)
+Revisi tabel Presatasi
+![](asset/post_12.png)
 
 tabel detail prestasi: 
 
 ![](asset/post_3.png)
+Revisi tabel detail prestasi
+![](asset/post_13.png)
 
 tabel guru pembimbing: 
 
 ![](asset/post_4.png)
+berikut Penjelasannya mengapa muncul dua kali dengan bidang yang berbeda
+1. **Fajar** di bidang **desain**
+2. **Fajar** di bidang **lkbb**
+
+### Penjelasan:
+1. **Nama yang Sama, Tugas Berbeda**  
+  Nama yang sama (Fajar) dapat merujuk pada **orang yang sama** tetapi memiliki **dua tugas atau bidang tanggung jawab** yang berbeda. Dalam hal ini, satu tugas sebagai pembimbing di bidang "desain", dan satu lagi di bidang "lkbb".
+2. **Data yang Relevan dengan Sistem**
+- Hal ini terjadi karena seorang guru dapat memiliki lebih dari satu bidang keahlian atau tanggung jawab dalam membimbing siswa, tergantung pada kompetensinya.
+
+Revisi Tabel Guru Pembimbing: 
+![](asset/post_17.png)
 
 tabel membimbing: 
 
@@ -160,6 +199,102 @@ Analisis :
 - **GROUP BY** digunakan untuk mengelompokkan data berdasarkan kolom `id_guru` (unik untuk setiap guru).
 - Setiap kelompok data berisi semua baris yang berkaitan dengan satu guru.
 - Setelah data dikelompokkan, fungsi agregasi seperti MAX() dapat bekerja pada setiap kelompok secara efektif.
+
+#### Revisi QUERY 
+Code: 
+```sql
+SELECT
+    ->  s.nama AS nama_siswa,
+    -> p.nama_prestasi AS nama_prestasi,
+    -> gp.nama_guru AS guru_pembimbingi
+    -> , dp.peringkat AS juara
+    -> FROM siswaa s
+    -> JOIN detail_prestasi dp ON s.nis = dp.id_siswa
+    -> JOIN prestasi p ON dp.id_prestasi = p.id_prestasi
+    -> JOIN guru_pembimbing gp ON dp.id_guru = gp.id_guru
+    -> GROUP BY  s.nama, p.nama_prestasi, gp.nama_guru, dp.peringkat
+    -> HAVING dp.peringkat <2
+    -> ORDER BY dp.peringkat ASC;
+```
+
+Hasil: 
+![](asset/post_18.png)
+
+**Konteks QUERY**
+### **Tujuan Query**
+
+1. **Menampilkan Data Juara**:
+ - Query ini bertujuan untuk mendapatkan data siswa yang menjadi juara dengan peringkat terbaik (peringkat < 2), yang berarti hanya siswa yang meraih peringkat 1.
+2. **Menampilkan Informasi Lengkap**:
+ - Data yang ditampilkan mencakup nama siswa, nama prestasi yang diraih, nama guru pembimbing yang membimbing prestasi tersebut, serta peringkat yang diraih.
+3. **Mengelompokkan Data**:
+ - Mengelompokkan hasil query berdasarkan siswa, prestasi, guru pembimbing, dan peringkat untuk memastikan data yang ditampilkan unik dan tidak berulang.
+ 4. . **Mengurutkan Hasil**:
+ - Data diurutkan berdasarkan peringkat secara **ascending** (peringkat terkecil ditampilkan terlebih dahulu).
+
+---
+
+### **Cara Relasi**
+
+1. **Relasi antara `siswaa` dan `detail_prestasi`**:
+- **`s.nis = dp.id_siswa`**:
+  - Relasi ini menunjukkan bahwa satu siswa dari tabel `siswaa` dapat memiliki banyak data prestasi di tabel `detail_prestasi` (relasi **1:N**).
+2. **Relasi antara `detail_prestasi` dan `prestasi`**:  
+- **`dp.id_prestasi = p.id_prestasi`**:
+ - Relasi ini menghubungkan tabel `detail_prestasi` dengan tabel `prestasi`, sehingga data prestasi yang dirinci di `detail_prestasi` dapat diidentifikasi dengan nama prestasinya (relasi **N:1**).
+3. **Relasi antara `detail_prestasi` dan `guru_pembimbing`**:
+- **`dp.id_guru = gp.id_guru`**:
+- Relasi ini menunjukkan bahwa setiap prestasi yang tercatat di `detail_prestasi` dibimbing oleh seorang guru dari tabel `guru_pembimbing` (relasi **N:1**).
+
+---
+
+### **Cara Agregasi**
+1. **Pengelompokan Data (`GROUP BY`)**:
+ - Query menggunakan **`GROUP BY s.nama, p.nama_prestasi, gp.nama_guru, dp.peringkat`** untuk memastikan setiap kombinasi siswa, prestasi, guru pembimbing, dan peringkat muncul hanya sekali dalam hasil.
+ - Hal ini diperlukan untuk mengelola data yang berpotensi berulang karena relasi antar tabel.
+2. **Filter Data dengan Agregasi (`HAVING`)**:
+- **`HAVING dp.peringkat < 2`**:
+- Digunakan untuk memfilter hanya siswa yang meraih peringkat pertama (peringkat < 2) setelah data dikelompokkan.
+- **`HAVING`** digunakan setelah pengelompokan data, sedangkan **`WHERE`** digunakan sebelum pengelompokan.
+3. **Urutan Hasil dengan Agregasi (`ORDER BY`)**:
+- **`ORDER BY dp.peringkat ASC`**:
+-  Mengurutkan hasil query berdasarkan peringkat secara ascending. Hal ini membantu menyajikan data dimulai dari peringkat yang tertinggi (peringkat 1).
+
+**Analisis**
+#### **1. SELECT**
+1.  **`s.nama AS nama_siswa`**:
+ - Memilih nama siswa dari tabel `siswaa` dan memberi alias `nama_siswa` agar lebih mudah dipahami.
+2. **`p.nama_prestasi AS nama_prestasi`**:
+ - Memilih nama prestasi dari tabel `prestasi` dan memberi alias `nama_prestasi`.
+3. **`gp.nama_guru AS guru_pembimbingi`**:
+ - Memilih nama guru dari tabel `guru_pembimbing` dan memberi alias `guru_pembimbingi` untuk ditampilkan.
+4. **`dp.peringkat AS juara`**:
+ - Memilih peringkat siswa dari tabel `detail_prestasi` dan memberi alias `juara`.
+
+#### **2. FROM**
+- **`siswaa s`**:
+ - Menentukan tabel utama yang digunakan, yaitu tabel `siswaa` dengan alias `s`.
+#### **3. JOIN**
+1.  **`JOIN detail_prestasi dp ON s.nis = dp.id_siswa`**:
+   - Menggabungkan tabel `detail_prestasi` dengan tabel `siswaa` berdasarkan relasi antara `nis` (di tabel `siswaa`) dan `id_siswa` (di tabel `detail_prestasi`).
+2.  **`JOIN prestasi p ON dp.id_prestasi = p.id_prestasi`**:
+   - Menggabungkan tabel `prestasi` dengan `detail_prestasi` berdasarkan relasi antara `id_prestasi` pada kedua tabel.
+3. **`JOIN guru_pembimbing gp ON dp.id_guru = gp.id_guru`**:
+  - Menggabungkan tabel `guru_pembimbing` dengan `detail_prestasi` berdasarkan relasi `id_guru`.
+
+#### **4. GROUP BY**
+
+- **`GROUP BY s.nama, p.nama_prestasi, gp.nama_guru, dp.peringkat`**:
+  - Mengelompokkan data berdasarkan nama siswa, nama prestasi, nama guru, dan peringkat.
+  - Hal ini memastikan setiap kombinasi unik dari kolom-kolom tersebut ditampilkan sebagai satu baris.
+#### **5. HAVING**
+
+- **`HAVING dp.peringkat < 2`**:
+ - Filter data hanya untuk siswa yang memiliki peringkat kurang dari 2 (peringkat pertama).
+
+#### **6. ORDER BY**
+- **`ORDER BY dp.peringkat ASC`**:
+  - Mengurutkan hasil query berdasarkan kolom `peringkat` secara ascending (dari yang terkecil ke terbesar).
 
 ### 2. Menampilkan data guru yang paling banyak membimbing siswa
 code: 
